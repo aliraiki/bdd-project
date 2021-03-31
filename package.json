@@ -1,5 +1,12 @@
 {
   "name": "bdd-project",
+  "jest": {
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)",
+      "**/*.steps.js"
+    ]
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
