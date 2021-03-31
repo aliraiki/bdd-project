@@ -2,6 +2,7 @@ import React from 'react';
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import { render } from '@testing-library/react';
 import Catalog from '../components/Catalog';
+import newProduct from '../utils/newProduct';
 
 const feature = loadFeature('./src/features/catalog.feature');
 
@@ -12,7 +13,13 @@ defineFeature(feature, (test) => {
     let numberOfItems;
 
     given('a user and 5 available items', () => {
-      availableItems = [{ name: 'Produit 1' }, { name: 'Produit 2' }, { name: 'Produit 3' }, { name: 'Produit 4' }, { name: 'Produit 5' }];
+      availableItems = [
+        newProduct(1, 'Produit 1'),
+        newProduct(2, 'Produit 2'),
+        newProduct(3, 'Produit 3'),
+        newProduct(4, 'Produit 4'),
+        newProduct(5, 'Produit 5'),
+      ];
     });
 
     when('the user visit the homepage', () => {
