@@ -6,7 +6,7 @@ import Catalog from '../components/Catalog';
 const feature = loadFeature('./src/features/catalog.feature');
 
 defineFeature(feature, (test) => {
-  test('It displays all the available products on the homepage', ({ given, when, then }) => {
+  test('Displays all available items (5 items)', ({ given, when, then }) => {
     let availableItems = [];
     let catalog;
     let numberOfItems;
@@ -15,7 +15,7 @@ defineFeature(feature, (test) => {
       availableItems = [{ name: 'Produit 1' }, { name: 'Produit 2' }, { name: 'Produit 3' }];
     });
 
-    when('they visit the homepage', () => {
+    when('the user visit the homepage', () => {
       catalog = render(<Catalog {...availableItems} />);
     });
 
@@ -23,6 +23,20 @@ defineFeature(feature, (test) => {
       numberOfItems = catalog.container.querySelector('.item').length;
       const expectedNbOfItems = 5;
       expect(numberOfItems).toEqual(expectedNbOfItems);
+    });
+  });
+
+  test('No item is available', ({ given, when, then }) => {
+    given('a user', () => {
+
+    });
+
+    when('they visit the homepage', () => {
+
+    });
+
+    then('they should see the message \'Aucun article n\'est disponible\'', () => {
+
     });
   });
 });
