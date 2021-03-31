@@ -15,7 +15,6 @@
     "@testing-library/user-event": "^12.1.10",
     "airbnb": "^0.0.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-react": "^7.21.5",
     "jest-cucumber": "^3.0.1",
