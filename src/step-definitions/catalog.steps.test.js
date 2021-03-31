@@ -12,15 +12,15 @@ defineFeature(feature, (test) => {
     let numberOfItems;
 
     given('a user and 5 available items', () => {
-      availableItems = [{ name: 'Produit 1' }, { name: 'Produit 2' }, { name: 'Produit 3' }];
+      availableItems = [{ name: 'Produit 1' }, { name: 'Produit 2' }, { name: 'Produit 3' }, { name: 'Produit 4' }, { name: 'Produit 5' }];
     });
 
     when('the user visit the homepage', () => {
-      catalog = render(<Catalog {...availableItems} />);
+      catalog = render(<Catalog items={availableItems} />);
     });
 
     then('they should see the 5 items on the page', () => {
-      numberOfItems = catalog.container.querySelector('.item').length;
+      numberOfItems = catalog.container.querySelectorAll('.item').length;
       const expectedNbOfItems = 5;
       expect(numberOfItems).toEqual(expectedNbOfItems);
     });
@@ -36,7 +36,7 @@ defineFeature(feature, (test) => {
     });
 
     then('they should see the message \'Aucun article n\'est disponible\'', () => {
-
+      expect(0).toEqual(1);
     });
   });
 });
