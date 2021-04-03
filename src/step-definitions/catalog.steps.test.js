@@ -1,6 +1,6 @@
 import React from 'react';
 import { defineFeature, loadFeature } from 'jest-cucumber';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Catalog from '../components/Catalog';
 import newProduct from '../utils/newProduct';
 
@@ -34,16 +34,24 @@ defineFeature(feature, (test) => {
   });
 
   test('No item is available', ({ given, when, then }) => {
-    given('a user', () => {
+    const availableItems = [];
+    let catalog;
+    let numberOfItems;
 
+    given('a user', () => {
     });
 
     when('they visit the homepage', () => {
-
+      catalog = render(<Catalog items={availableItems} />);
     });
 
     then('they should see the message \'Aucun article n\'est disponible\'', () => {
-      expect(0).toEqual(1);
+      numberOfItems = catalog.container.querySelectorAll('.item').length;
+      const expectedNbOfItems = 0;
+      expect(numberOfItems).toEqual(expectedNbOfItems);
+
+      const noItemMessage = screen.getByText(/Aucun article n'est disponible/);
+      expect(noItemMessage).toBeInTheDocument();
     });
   });
 });
