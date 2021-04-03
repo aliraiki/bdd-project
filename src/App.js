@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import Catalog from './components/Catalog';
+import newProduct from './utils/newProduct';
 import './App.css';
+
+const availableItems = [
+  newProduct(1, 'Produit 1'),
+  newProduct(2, 'Produit 2'),
+  newProduct(3, 'Produit 3'),
+  newProduct(4, 'Produit 4'),
+  newProduct(5, 'Produit 5'),
+];
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          <code>src/App.js</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Catalog items={availableItems} />
       </header>
     </div>
   );
