@@ -27,16 +27,21 @@ defineFeature(feature, (test) => {
   });
 
   test('Cut description of an item', ({ given, when, then }) => {
-    given('an item', () => {
+    let item;
+    const itemDescription = 'Une description qui dépasse 50 caractères et qui devra être coupé lors de l\'affichage de la description du produit';
+    let informationPage;
 
+    given('an item', () => {
+      item = newProduct(1, 'Produit 1', itemDescription);
     });
 
     when('a user visits its information page', () => {
-
+      informationPage = render(<InformationPage item={item} />);
     });
 
     then(/^the item's description should not exceed (\d+) characters$/, (maxNumberOfCharacters) => {
-      expect(0).toEqual(1);
+      const displayedItemDescriptionLength = informationPage.container.querySelector('#description').innerHTML.length;
+      expect(displayedItemDescriptionLength).toBeLessThanOrEqual(Number(maxNumberOfCharacters));
     });
   });
 });
