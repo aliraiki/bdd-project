@@ -2,7 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function InformationPage({ item }) {
-  return <p id="description">{item.description.substring(0, 50)}</p>;
+  return (
+    <div>
+      <div id="name">{item.name}</div>
+      <div>
+        <p id="description">{item.description.substring(0, 50)}</p>
+        ...
+      </div>
+      <div id="price">{item.price}</div>
+    </div>
+  );
 }
 
 InformationPage.defaultProps = {
