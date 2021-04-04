@@ -52,13 +52,13 @@ defineFeature(feature, (test) => {
     let informationPage;
     let minimumArticleCount;
 
-    given(/^a user is on the information page of an item and counter is at (\d+)$/, (arg0) => {
+    given(/^a user is on the information page of an item and counter is at (\d+)$/, (minimumCount) => {
       const item = newProduct(1, 'Produit 1');
-      minimumArticleCount = arg0;
+      minimumArticleCount = minimumCount;
       informationPage = render(<InformationPage item={item} />);
       const incrementButton = informationPage.getByTestId('increment');
       // Loop to get the desired initial article number
-      for (let i = 1; i < arg0; i += 1) {
+      for (let i = 1; i < minimumArticleCount; i += 1) {
         fireEvent.click(incrementButton);
       }
     });
