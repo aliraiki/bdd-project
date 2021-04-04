@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 
 function InformationPage({ item }) {
   const [articleCount, setArticleCount] = useState(1);
+  const minimumArticleCount = 1;
+  const maximumArticleCount = 10;
 
   const decrement = () => {
-    setArticleCount(Math.max(articleCount - 1, 1));
+    setArticleCount(Math.max(articleCount - 1, minimumArticleCount));
   };
 
   const increment = () => {
-    setArticleCount(Math.min(articleCount + 1, 10));
+    setArticleCount(Math.min(articleCount + 1, maximumArticleCount));
   };
 
   return (
