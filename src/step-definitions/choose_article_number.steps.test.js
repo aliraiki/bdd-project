@@ -1,6 +1,6 @@
 import React from 'react';
 import { defineFeature, loadFeature } from 'jest-cucumber';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import newProduct from '../utils/newProduct';
 import InformationPage from '../components/InformationPage';
 
