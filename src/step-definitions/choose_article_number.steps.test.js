@@ -26,16 +26,24 @@ defineFeature(feature, (test) => {
   });
 
   test('Decrement number of an item', ({ given, when, then }) => {
+    let informationPage;
     given(/^a user is on the information page of an item and counter is at (\d+)$/, (arg0) => {
-
+      const item = newProduct(1, 'Produit 1');
+      informationPage = render(<InformationPage item={item} />);
+      const incrementButton = informationPage.getByTestId('increment');
+      for (let i = 1; i < arg0; i += 1) {
+        fireEvent.click(incrementButton);
+      }
     });
 
     when('they click on -', () => {
-
+      const decrementButton = informationPage.getByTestId('decrement');
+      fireEvent.click(decrementButton);
     });
 
     then(/^the counter should change to (\d+)$/, (arg0) => {
-      expect(0).toEqual(1);
+      const articleCount = informationPage.getByTestId('article-count');
+      expect(articleCount.textContent).toEqual(arg0);
     });
   });
 
