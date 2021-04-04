@@ -5,7 +5,7 @@ function InformationPage({ item }) {
   const [articleCount, setArticleCount] = useState(1);
 
   const decrement = () => {
-    setArticleCount(articleCount - 1);
+    setArticleCount(Math.max(articleCount - 1, 1));
   };
 
   const increment = () => {
