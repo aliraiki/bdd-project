@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 function InformationPage({ item }) {
   const [articleCount, setArticleCount] = useState(1);
 
+  const decrement = () => {
+    setArticleCount(articleCount - 1);
+  };
+
   const increment = () => {
     setArticleCount(articleCount + 1);
   };
@@ -20,9 +24,7 @@ function InformationPage({ item }) {
       <button
         type="button"
         data-testid="decrement"
-        onClick={() => {
-          setArticleCount(articleCount - 1);
-        }}
+        onClick={decrement}
       >
         -
       </button>
