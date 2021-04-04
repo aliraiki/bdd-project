@@ -17,6 +17,15 @@ function InformationPage({ item }) {
       </div>
       <div id="price">{item.price}</div>
 
+      <button
+        type="button"
+        data-testid="decrement"
+        onClick={() => {
+          setArticleCount(articleCount - 1);
+        }}
+      >
+        -
+      </button>
       <span data-testid="article-count">{articleCount}</span>
       <button
         type="button"
