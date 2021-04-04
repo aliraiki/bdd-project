@@ -9,7 +9,7 @@ function InformationPage({ item }) {
   };
 
   const increment = () => {
-    setArticleCount(articleCount + 1);
+    setArticleCount(Math.min(articleCount + 1, 10));
   };
 
   return (
