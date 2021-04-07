@@ -27,12 +27,12 @@ defineFeature(feature, (test) => {
 
     when('they click on +', () => {
       fireEvent.click(incrementButton);
-      articleCount += 1;
+      articleCount = Number(informationPage.getByTestId('article-count').textContent);
     });
 
     then(/^the total price should be (\d+)€$/, (totalPrice) => {
-      expect(Number(totalPrice)).toEqual(articlePrice * articleCount);
       const displayedTotalPrice = informationPage.container.querySelector('#total-price').innerHTML;
+      expect(Number(totalPrice)).toEqual(articlePrice * articleCount);
       expect(displayedTotalPrice).toEqual(totalPrice);
     });
   });
