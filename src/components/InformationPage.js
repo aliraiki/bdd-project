@@ -9,6 +9,7 @@ function InformationPage({
   const minimumArticleCount = 1;
   const maximumArticleCount = 10;
   const itemDescription = item.description;
+  const itemPrice = item.price;
 
   const decrement = () => {
     setArticleCount(Math.max(articleCount - 1, minimumArticleCount));
@@ -16,6 +17,11 @@ function InformationPage({
 
   const increment = () => {
     setArticleCount(Math.min(articleCount + 1, maximumArticleCount));
+  };
+
+  const handleClick = () => {
+    setBoughtItems(boughtItems.concat([`${articleCount} ${item.name}`]));
+    setWallet(wallet - itemPrice);
   };
 
   return (
@@ -46,16 +52,13 @@ function InformationPage({
         <div className="total-price-tag">
           Prix total :&nbsp;
           <span id="total-price">
-            {articleCount * item.price}
+            {articleCount * itemPrice}
           </span>
           ₽
           <div
             className="buy-button"
             data-testid="buy"
-            onClick={() => {
-              setBoughtItems(boughtItems.concat([`${articleCount} ${item.name}`]));
-              setWallet(wallet - item.price);
-            }}
+            onClick={handleClick}
             aria-hidden
           >
             &nbsp;🛒

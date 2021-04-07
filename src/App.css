@@ -26,13 +26,19 @@
   color: #61dafb;
 }
 
-.bought-items {
+.bought-items, .money-left {
   background: #f4f4f4;
   color: rgb(53, 53, 53);
   padding: 15px;
   margin: 10px;
   border-radius: 15px;
   font-weight: bold;
+}
+
+.money-left {
+  width: 40vh;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .bought-item {

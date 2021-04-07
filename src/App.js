@@ -35,9 +35,10 @@ function App({ initialAmountOfMoney, items }) {
           ))}
         </h5>
         <h6 className="money-left">
+          💵 Argent restant :&nbsp;
           <span data-testid="money-left">{wallet}</span>
-          {' '}
-          ₽
+          &nbsp;₽
+          💵
         </h6>
 
         <Catalog
