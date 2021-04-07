@@ -26,6 +26,19 @@
   color: #61dafb;
 }
 
+.bought-items {
+  background: #f4f4f4;
+  color: rgb(53, 53, 53);
+  padding: 15px;
+  margin: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.bought-item {
+  font-weight: normal;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

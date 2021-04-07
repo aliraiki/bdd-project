@@ -40,23 +40,26 @@ function InformationPage({ item, boughtItems, setBoughtItems }) {
       >
         +
       </button>
-      <div className="total-price-tag">
-        Prix total :&nbsp;
-        <span id="total-price">
-          {articleCount * item.price}
-        </span>
-        ₽
+      <div className="buy-section">
+        <div className="total-price-tag">
+          Prix total :&nbsp;
+          <span id="total-price">
+            {articleCount * item.price}
+          </span>
+          ₽
+          <div
+            className="buy-button"
+            data-testid="buy"
+            onClick={() => {
+              setBoughtItems(boughtItems.concat([`${articleCount} ${item.name}`]));
+            }}
+            aria-hidden
+          >
+            &nbsp;🛒
+          </div>
+        </div>
+
       </div>
-      <button
-        type="button"
-        className="btn"
-        data-testid="buy"
-        onClick={() => {
-          setBoughtItems(boughtItems.concat([`${articleCount} ${item.name}`]));
-        }}
-      >
-        🛒
-      </button>
     </div>
   );
 }

@@ -22,10 +22,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div data-testid="bought-items">
-          Liste des articles achetés :
-          {boughtItems}
-        </div>
+        <h5 className="bought-items" data-testid="bought-items">
+          Liste des articles achetés :&nbsp;
+          {boughtItems.map((item) => (
+            <span key={item} className="bought-item">
+              {item}
+              ,&nbsp;
+            </span>
+          ))}
+        </h5>
         <Catalog items={availableItems} boughtItems={boughtItems} setBoughtItems={setBoughtItems} />
       </header>
     </div>
