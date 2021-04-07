@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../static/styles/Catalog.css';
 import InformationPage from './InformationPage';
 
-function Catalog({ items }) {
+function Catalog({ items, boughtItems, setBoughtItems }) {
   if (items.length === 0) return <p>Aucun article n&apos;est disponible</p>;
 
   return (
@@ -21,7 +21,7 @@ function Catalog({ items }) {
             </div>
             ₽
           </div>
-          <InformationPage item={item} />
+          <InformationPage item={item} boughtItems={boughtItems} setBoughtItems={setBoughtItems} />
         </div>
       ))}
     </div>
@@ -30,6 +30,8 @@ function Catalog({ items }) {
 
 Catalog.defaultProps = {
   items: [],
+  boughtItems: [],
+  setBoughtItems: () => {},
 };
 
 Catalog.propTypes = {
@@ -40,6 +42,8 @@ Catalog.propTypes = {
     price: PropTypes.number,
     image: PropTypes.string,
   })),
+  boughtItems: PropTypes.arrayOf(PropTypes.string),
+  setBoughtItems: PropTypes.func,
 };
 
 export default Catalog;

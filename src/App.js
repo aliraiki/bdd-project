@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Catalog from './components/Catalog';
 import newProduct from './utils/newProduct';
 import pokeballImage from './static/images/pokeball.png';
@@ -18,10 +18,15 @@ const availableItems = [
 ];
 
 function App() {
+  const [boughtItems, setBoughtItems] = useState([]);
   return (
     <div className="App">
       <header className="App-header">
-        <Catalog items={availableItems} />
+        <div data-testid="bought-items">
+          Liste des articles achetés :
+          {boughtItems}
+        </div>
+        <Catalog items={availableItems} boughtItems={boughtItems} setBoughtItems={setBoughtItems} />
       </header>
     </div>
   );

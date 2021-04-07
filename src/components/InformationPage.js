@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../static/styles/InformationPage.css';
 
-function InformationPage({ item }) {
+function InformationPage({ item, boughtItems, setBoughtItems }) {
   const [articleCount, setArticleCount] = useState(1);
   const minimumArticleCount = 1;
   const maximumArticleCount = 10;
@@ -47,6 +47,16 @@ function InformationPage({ item }) {
         </span>
         ₽
       </div>
+      <button
+        type="button"
+        className="btn"
+        data-testid="buy"
+        onClick={() => {
+          setBoughtItems(boughtItems.concat([`${articleCount} ${item.name}`]));
+        }}
+      >
+        🛒
+      </button>
     </div>
   );
 }
@@ -58,6 +68,8 @@ InformationPage.defaultProps = {
     description: '',
     price: 0,
   },
+  boughtItems: [],
+  setBoughtItems: () => {},
 };
 
 InformationPage.propTypes = {
@@ -67,6 +79,8 @@ InformationPage.propTypes = {
     description: PropTypes.string,
     price: PropTypes.number,
   }),
+  boughtItems: PropTypes.arrayOf(PropTypes.string),
+  setBoughtItems: PropTypes.func,
 };
 
 export default InformationPage;
