@@ -19,6 +19,7 @@ function InformationPage({ item }) {
     <div className="info-section">
       <div className="description-block">
         <p id="description">{item.description.substring(0, 50)}</p>
+        {item.description.length > 50 && '...'}
       </div>
 
       <button
