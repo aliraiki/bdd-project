@@ -44,4 +44,25 @@ defineFeature(feature, (test) => {
       expect(displayedItemDescriptionLength).toBeLessThanOrEqual(Number(maxNumberOfCharacters));
     });
   });
+
+  test('Add ... if item description is cut', ({ given, when, then }) => {
+    let item;
+    const itemDescription = 'Une description qui dépasse 50 caractères et qui devra être coupé lors de l\'affichage de la description du produit';
+    let informationPage;
+
+    given('an item which description exceeds 50 characters', () => {
+      item = newProduct(1, 'Produit 1', itemDescription);
+    });
+
+    when('a user visits its information page', () => {
+      informationPage = render(<InformationPage item={item} />);
+    });
+
+    then('the item\'s description should end with ...', () => {
+      const descriptionContent = informationPage.container.querySelector('.description-block').innerHTML;
+      const descriptionEnd = descriptionContent.substring(descriptionContent.length - 3);
+      const expectedDescriptionEnd = '...';
+      expect(descriptionEnd).toEqual(expectedDescriptionEnd);
+    });
+  });
 });
