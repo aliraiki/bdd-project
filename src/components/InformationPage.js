@@ -20,8 +20,13 @@ function InformationPage({
   };
 
   const handleClick = () => {
-    setBoughtItems(boughtItems.concat([`${articleCount} ${item.name}`]));
-    setWallet(wallet - itemPrice);
+    if (wallet >= itemPrice * articleCount) {
+      setBoughtItems(boughtItems.concat([`${articleCount} ${item.name}`]));
+      setWallet(wallet - itemPrice * articleCount);
+    } else {
+      // eslint-disable-next-line no-alert
+      alert("Vous n'avez pas assez d'argent...");
+    }
   };
 
   return (
