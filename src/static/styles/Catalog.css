@@ -55,3 +55,7 @@
   transform: scale(1.02);
   box-shadow: 5px 3px 5px rgba(118, 0, 0, 0.3);
 }
+
+.btn:hover {
+  color: white;
+}

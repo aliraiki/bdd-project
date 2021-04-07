@@ -38,10 +38,12 @@ function InformationPage({ item }) {
       >
         +
       </button>
-      <div>
-        Prix total :
-        <span id="total-price">{articleCount * item.price}</span>
-        €
+      <div className="total-price-tag">
+        Prix total :&nbsp;
+        <span id="total-price">
+          {articleCount * item.price}
+        </span>
+        ₽
       </div>
     </div>
   );

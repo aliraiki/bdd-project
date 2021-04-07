@@ -1,6 +1,6 @@
 .info-section {
   margin: 5px;
-  color: black;
+  color: rgb(53, 53, 53);
   font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   font-style: italic;
@@ -17,4 +17,24 @@
 
 .description-block {
   margin-top: 15px;
+}
+
+.total-price-tag {
+  font-family: 'Pixel', arial;
+  font-size: 15px !important;
+  border-radius: 20px !important;
+  display: inline-flex;
+  margin-top: 20px;
+  text-transform: capitalize;
+  transition: 0.2s;
+  padding: 5px 20px;
+  border : 3px solid red;
+  font-weight: bold;
+  color: red;
+  letter-spacing: 1px;
+}
+
+.total-price-tag:hover {
+  transform: scale(1.02);
+  box-shadow: 5px 3px 5px rgba(118, 0, 0, 0.3);
 }
