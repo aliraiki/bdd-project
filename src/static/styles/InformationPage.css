@@ -1,0 +1,20 @@
+.info-section {
+  margin: 5px;
+  color: black;
+  font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.info-section button {
+  background-color: red;
+  color: white;
+  border-radius: 20px;
+  margin: 0 10px;
+  padding: 5px 15px;
+  font-weight: bold;
+}
+
+.description-block {
+  margin-top: 15px;
+}

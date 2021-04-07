@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import '../static/styles/InformationPage.css';
 
 function InformationPage({ item }) {
   const [articleCount, setArticleCount] = useState(1);
@@ -15,15 +16,13 @@ function InformationPage({ item }) {
   };
 
   return (
-    <div>
-      <div id="name">{item.name}</div>
-      <div>
+    <div className="info-section">
+      <div className="description-block">
         <p id="description">{item.description.substring(0, 50)}</p>
-        ...
       </div>
-      <div id="price">{item.price}</div>
 
       <button
+        className="btn"
         type="button"
         data-testid="decrement"
         onClick={decrement}
@@ -32,6 +31,7 @@ function InformationPage({ item }) {
       </button>
       <span data-testid="article-count">{articleCount}</span>
       <button
+        className="btn"
         type="button"
         data-testid="increment"
         onClick={increment}
