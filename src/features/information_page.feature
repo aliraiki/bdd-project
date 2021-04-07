@@ -11,3 +11,8 @@ Feature: Information page
     Given an item
     When a user visits its information page
     Then the item's description should not exceed 50 characters
+
+  Scenario: Add ... if item description is cut
+    Given an item which description exceeds 50 characters
+    When a user visits its information page
+    Then the item's description should end with ...
