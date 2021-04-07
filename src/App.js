@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Catalog from './components/Catalog';
 import newProduct from './utils/newProduct';
 import pokeballImage from './static/images/pokeball.png';
@@ -17,8 +18,10 @@ const availableItems = [
   newProduct(5, 'Antidote', 'Small description', 150, antidoteImage),
 ];
 
-function App() {
+function App({ initialAmountOfMoney, items }) {
   const [boughtItems, setBoughtItems] = useState([]);
+  const [wallet, setWallet] = useState(initialAmountOfMoney);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -31,10 +34,38 @@ function App() {
             </span>
           ))}
         </h5>
-        <Catalog items={availableItems} boughtItems={boughtItems} setBoughtItems={setBoughtItems} />
+        <h6 className="money-left">
+          <span data-testid="money-left">{wallet}</span>
+          {' '}
+          ₽
+        </h6>
+
+        <Catalog
+          items={items}
+          boughtItems={boughtItems}
+          setBoughtItems={setBoughtItems}
+          wallet={wallet}
+          setWallet={setWallet}
+        />
       </header>
     </div>
   );
 }
+
+App.defaultProps = {
+  initialAmountOfMoney: 1000,
+  items: availableItems,
+};
+
+App.propTypes = {
+  initialAmountOfMoney: PropTypes.number,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    image: PropTypes.string,
+  })),
+};
 
 export default App;

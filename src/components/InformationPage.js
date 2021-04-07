@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../static/styles/InformationPage.css';
 
-function InformationPage({ item, boughtItems, setBoughtItems }) {
+function InformationPage({
+  item, boughtItems, setBoughtItems, wallet, setWallet,
+}) {
   const [articleCount, setArticleCount] = useState(1);
   const minimumArticleCount = 1;
   const maximumArticleCount = 10;
@@ -52,6 +54,7 @@ function InformationPage({ item, boughtItems, setBoughtItems }) {
             data-testid="buy"
             onClick={() => {
               setBoughtItems(boughtItems.concat([`${articleCount} ${item.name}`]));
+              setWallet(wallet - item.price);
             }}
             aria-hidden
           >
@@ -73,6 +76,8 @@ InformationPage.defaultProps = {
   },
   boughtItems: [],
   setBoughtItems: () => {},
+  wallet: 0,
+  setWallet: () => {},
 };
 
 InformationPage.propTypes = {
@@ -84,6 +89,8 @@ InformationPage.propTypes = {
   }),
   boughtItems: PropTypes.arrayOf(PropTypes.string),
   setBoughtItems: PropTypes.func,
+  wallet: PropTypes.number,
+  setWallet: PropTypes.func,
 };
 
 export default InformationPage;
