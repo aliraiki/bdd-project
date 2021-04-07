@@ -49,4 +49,33 @@ defineFeature(feature, (test) => {
       expect(displayedMoneyLeft).toEqual(Number(moneyLeft));
     });
   });
+
+  test('Display error if not enough money', ({ given, when, then }) => {
+    let homepage;
+    let initialAmountOfMoney;
+    let articlePrice;
+
+    window.alert = jest.fn();
+    given(/^a user with (\d+)₽ and an article that costs (\d+)₽$/, (money, price) => {
+      initialAmountOfMoney = Number(money);
+      articlePrice = Number(price);
+      const item = newProduct(1, 'Produit 1', 'Petite description', articlePrice);
+      homepage = render(<App items={[item]} initialAmountOfMoney={initialAmountOfMoney} />);
+    });
+
+    when('they click on the Buy symbol of this article', () => {
+      const pokeballBuyButton = homepage.getAllByTestId('buy')[0];
+      fireEvent.click(pokeballBuyButton);
+    });
+
+    then('an error should be displayed and the user should still have the same amount of money', () => {
+      expect(window.alert).toHaveBeenCalledTimes(1);
+
+      const displayedMoneyLeft = Number(homepage.getByTestId('money-left').innerHTML);
+      expect(displayedMoneyLeft).toEqual(initialAmountOfMoney);
+
+      const boughtItems = homepage.getByTestId('bought-items').innerHTML;
+      expect(boughtItems).not.toContain('Produit 1');
+    });
+  });
 });
