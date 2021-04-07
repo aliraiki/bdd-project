@@ -27,16 +27,26 @@ defineFeature(feature, (test) => {
   });
 
   test('Update the amount of money that is left', ({ given, when, then }) => {
-    given(/^a user with (\d+)₽ and an article that costs (\d+)₽$/, (arg0, arg1) => {
+    let homepage;
+    let initialAmountOfMoney;
+    let articlePrice;
 
+    given(/^a user with (\d+)₽ and an article that costs (\d+)₽$/, (money, price) => {
+      initialAmountOfMoney = Number(money);
+      articlePrice = Number(price);
+      const item = newProduct(1, 'Produit 1', 'Petite description', articlePrice);
+      homepage = render(<App items={[item]} initialAmountOfMoney={initialAmountOfMoney} />);
     });
 
     when('they click on the Buy symbol of this article', () => {
-
+      const pokeballBuyButton = homepage.getAllByTestId('buy')[0];
+      fireEvent.click(pokeballBuyButton);
     });
 
-    then(/^the amount of money that is left should be (\d+)₽$/, (arg0) => {
-      expect(0).toEqual(1);
+    then(/^the amount of money that is left should be (\d+)₽$/, (moneyLeft) => {
+      const displayedMoneyLeft = Number(homepage.getByTestId('money-left').innerHTML);
+      expect(initialAmountOfMoney - articlePrice).toEqual(Number(moneyLeft));
+      expect(displayedMoneyLeft).toEqual(Number(moneyLeft));
     });
   });
 });
