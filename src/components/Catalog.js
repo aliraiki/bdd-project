@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../static/styles/Catalog.css';
+import InformationPage from './InformationPage';
 
 function Catalog({ items }) {
   if (items.length === 0) return <p>Aucun article n&apos;est disponible</p>;
@@ -20,6 +21,7 @@ function Catalog({ items }) {
             </div>
             ₽
           </div>
+          <InformationPage item={item} />
         </div>
       ))}
     </div>
