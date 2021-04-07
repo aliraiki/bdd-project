@@ -6,6 +6,7 @@ function InformationPage({ item }) {
   const [articleCount, setArticleCount] = useState(1);
   const minimumArticleCount = 1;
   const maximumArticleCount = 10;
+  const itemDescription = item.description;
 
   const decrement = () => {
     setArticleCount(Math.max(articleCount - 1, minimumArticleCount));
@@ -18,8 +19,8 @@ function InformationPage({ item }) {
   return (
     <div className="info-section">
       <div className="description-block">
-        <p id="description">{item.description.substring(0, 50)}</p>
-        {item.description.length > 50 && '...'}
+        <p id="description">{itemDescription.substring(0, 50)}</p>
+        {itemDescription.length > 50 && '...'}
       </div>
 
       <button
