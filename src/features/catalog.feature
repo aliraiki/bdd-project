@@ -1,6 +1,6 @@
 Feature: Catalog
 
-  It displays all the available products on the homepage
+  It displays up to  the available products on the homepage
 
   Scenario: Displays all available items (5 items)
     Given a user and 5 available items
@@ -11,3 +11,4 @@ Feature: Catalog
     Given a user
     When they visit the homepage
     Then they should see the message 'Aucun article n'est disponible'
+
