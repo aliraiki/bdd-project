@@ -1,6 +1,6 @@
 Feature: Catalog
 
-  It displays up to  the available products on the homepage
+  It displays up to 10 available articles per result page.
 
   Scenario: Displays all available items (5 items)
     Given a user and 5 available items
@@ -12,3 +12,7 @@ Feature: Catalog
     When they visit the homepage
     Then they should see the message 'Aucun article n'est disponible'
 
+  Scenario: There are more than 10 products
+    Given a user and 15 available products
+    When the user visists the homepage
+    Then they should have 2 result pages
