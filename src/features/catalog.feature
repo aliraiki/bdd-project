@@ -11,3 +11,9 @@ Feature: Catalog
     Given a user
     When they visit the homepage
     Then they should see the message 'Aucun article n'est disponible'
+
+  Scenario: Display only purchasable items
+    Given a user with n currency
+    When they visit the homepage
+    Then they should only see the items with a unit price inferior to n
+
