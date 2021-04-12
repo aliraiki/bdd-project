@@ -8,3 +8,7 @@
 .page-number-active {
     background-color: #FF5656;
 }
+
+.page-numbers {
+    margin-top: 20px;
+}

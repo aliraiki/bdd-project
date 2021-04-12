@@ -3,6 +3,7 @@ import { defineFeature, loadFeature } from 'jest-cucumber';
 import { render, screen } from '@testing-library/react';
 import newProduct from "../utils/newProduct";
 import PageContainer from "../components/PageContainer";
+import {fireEvent} from "@testing-library/dom";
 
 const feature = loadFeature('./src/features/result_paging.feature');
 
@@ -84,6 +85,57 @@ defineFeature(feature, (test) => {
       expect(numberOfPages).toEqual(expectedNumberOfPages);
       expect(numberOfResultsOnFirstPage).toEqual(expectedNumberOfResultsOnFirstPage);
       expect(class1).not.toEqual(class2);
+    });
+
+  });
+
+  test("There are more than 10 results and the user goes to the second page", ({ given, when, then }) => {
+    let availableItems = [];
+    let pageContainer;
+    let numberOfPages;
+    let numberOfResultsOnFirstPage;
+    let class1;
+    let class2;
+
+    given("a user and 18 result items", () => {
+      availableItems = [
+        newProduct(1, 'Produit 1'),
+        newProduct(2, 'Produit 2'),
+        newProduct(3, 'Produit 3'),
+        newProduct(4, 'Produit 4'),
+        newProduct(5, 'Produit 5'),
+        newProduct(6, 'Produit 6'),
+        newProduct(7, 'Produit 2'),
+        newProduct(8, 'Produit 3'),
+        newProduct(9, 'Produit 4'),
+        newProduct(10, 'Produit 5'),
+        newProduct(11, 'Produit 1'),
+        newProduct(12, 'Produit 2'),
+        newProduct(13, 'Produit 3'),
+        newProduct(14, 'Produit 4'),
+        newProduct(15, 'Produit 5'),
+        newProduct(16, 'Produit 3'),
+        newProduct(17, 'Produit 4'),
+        newProduct(18, 'Produit 5'),
+      ]
+    });
+
+    when("the user visits the homepage and clicks on page 2 button", () => {
+      pageContainer = render(<PageContainer items={availableItems} />);
+      // Clic de l'utilisateur sur le bouton de la page 2
+      fireEvent.click(pageContainer.container.querySelector('.page-numbers').childNodes.item(2));
+    });
+
+    then("there should be 8 result displayed, and the second page button should be highlighted", () => {
+      numberOfPages = pageContainer.container.querySelectorAll('.page-number, .page-number-active').length;
+      class1 = pageContainer.container.querySelectorAll('.page-number, .page-number-active').item(1).className;
+      numberOfResultsOnFirstPage = pageContainer.container.querySelectorAll('.item').length;
+      const expectedNumberOfPages = 2;
+      const expectedNumberOfResultsOnFirstPage = 8;
+      const expectedClass1 = 'page-number-active'; // La surbrillance est seulement testée par le biais du className
+      expect(numberOfPages).toEqual(expectedNumberOfPages);
+      expect(numberOfResultsOnFirstPage).toEqual(expectedNumberOfResultsOnFirstPage);
+      expect(class1).toEqual(expectedClass1);
     });
 
   });
