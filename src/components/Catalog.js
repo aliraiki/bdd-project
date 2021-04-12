@@ -6,7 +6,7 @@ import InformationPage from './InformationPage';
 function Catalog({
   items, boughtItems, setBoughtItems, wallet, setWallet,
 }) {
-  const itemsToDisplay = items.filter(item => item.price <= wallet);
+  const itemsToDisplay = items.filter((item) => item.price <= wallet);
   if (itemsToDisplay.length === 0) return <p>Aucun article n&apos;est disponible</p>;
 
   return (

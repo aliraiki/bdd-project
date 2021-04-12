@@ -13,6 +13,6 @@ Feature: Buy Article
     Then the amount of money that is left should be 250₽
 
   Scenario: Display error if not enough money
-    Given a user with 300₽ and an article that costs 400₽
-    When they click on the Buy symbol of this article
+    Given a user with 500₽ and an article that costs 400₽
+    When they click on the Buy symbol to buy 2 pieces of this article
     Then an error should be displayed and the user should still have the same amount of money
