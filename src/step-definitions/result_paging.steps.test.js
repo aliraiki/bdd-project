@@ -31,8 +31,6 @@ defineFeature(feature, (test) => {
     then("there should be one page displaying 6 results, and the active page should be highlighted below.", () => {
       numberOfPages = pageContainer.container.querySelectorAll('.page-numbers').length;
       numberOfResultsOnFirstPage = pageContainer.container.querySelectorAll('.item').length;
-      console.log(numberOfPages);
-      console.log(numberOfResultsOnFirstPage);
       const expectedNumberOfPages = 1;
       const expectedNumberOfResultsOnFirstPage = 6;
       expect(numberOfPages).toEqual(expectedNumberOfPages);

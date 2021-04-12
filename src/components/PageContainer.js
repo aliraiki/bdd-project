@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ResultPage from './ResultPage';
+import InformationPage from './InformationPage';
+import '../static/styles/PageContainer.css';
 
 function PageContainer(
   {
@@ -9,20 +11,35 @@ function PageContainer(
 ) {
   const [currentPage, setCurrentPage] = useState(0);
   const numberOfPages = Math.floor(items.length / 10) + 1;
-  console.log(numberOfPages);
   const pages = [...Array(numberOfPages).keys()];
   // Génère une liste des entiers entre 0 et numberOfPages - 1.
 
   return (
-    <div>
-      <ResultPage
-        items={items.slice(10 * currentPage, 10 * currentPage + 9)}
-        boughtItems={boughtItems}
-        setBoughtItems={setBoughtItems}
-        wallet={wallet}
-        setWallet={setWallet}
-      />
+    <div className="items-container">
+      {items.slice(10 * currentPage, 10 * currentPage + 10).map((item) => (
+        <div key={item.id} className="item">
+          <img className="article-image" alt={item.name} src={item.image} />
+          <hr className="separator" />
+          <div className="article-name">
+            {item.name}
+          </div>
+          <div className="price-tag">
+            <div className="article-price">
+              {item.price}
+            </div>
+            ₽
+          </div>
+          <InformationPage
+            item={item}
+            boughtItems={boughtItems}
+            setBoughtItems={setBoughtItems}
+            wallet={wallet}
+            setWallet={setWallet}
+          />
+        </div>
+      ))}
       <div className="page-numbers">
+        <span>Pages de résultat : </span>
         {pages.map((page) => (
           <button onClick={() => setCurrentPage(page)} type="button" datatest-id="page_button" key={page} className="page-number">
             {page + 1}
