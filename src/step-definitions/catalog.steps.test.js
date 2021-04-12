@@ -55,7 +55,7 @@ defineFeature(feature, (test) => {
     });
   });
 
-  test('Display only purchasable items', ({ given, when, then }) => {
+  test('Display only purchasable items under 200', ({ given, when, then }) => {
     let availableItems = [];
     let availableItemswithMoney = [];
     let catalog;
@@ -80,6 +80,46 @@ defineFeature(feature, (test) => {
       numberOfItems = catalog.container.querySelectorAll('.item').length;
       const expectedNbOfItems = 3;
       expect(numberOfItems).toEqual(expectedNbOfItems);
+    });
+  });
+
+  test('Display only purchasable items', ({ given, when, then }) => {
+    let availableItems = [];
+    let availableItemswithn1 = [];
+    let availableItemswithn2 = [];
+    let catalog1;
+    let catalog2;
+    let numberOfItems1;
+    let numberOfItems2;
+    let n1;
+    let n2;
+
+    given('a user with n currency', () => {
+      availableItems = [
+        newProduct(1, 'Poke Ball', 'Small description', 200),
+        newProduct(2, 'Super Ball', 'Small description', 400),
+        newProduct(3, 'Potion', 'Small description', 200),
+        newProduct(4, 'Reanimation', 'Small description', 250),
+        newProduct(5, 'Antidote', 'Small description', 150),
+      ];
+      n1 = 200;
+      n2 = 250;
+      availableItemswithn1 = availableItems.filter(item => item.price <= n1);
+      availableItemswithn2 = availableItems.filter(item => item.price <= n2);
+    });
+
+    when('they visit the homepage', () => {
+      catalog1 = render(<Catalog items={availableItemswithn1} />);
+      catalog2 = render(<Catalog items={availableItemswithn2} />);
+    });
+
+    then('they should only see the items with price lower or equal to n', () => {
+      numberOfItems1 = catalog1.container.querySelectorAll('.item').length;
+      const expectedNbOfItems1 = 5;
+      expect(numberOfItems1).toEqual(expectedNbOfItems1);
+      numberOfItems2 = catalog2.container.querySelectorAll('.item').length;
+      const expectedNbOfItems2 = 5;
+      expect(numberOfItems2).toEqual(expectedNbOfItems2);
     });
   });
 });
