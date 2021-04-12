@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import ResultPage from './ResultPage';
 import InformationPage from './InformationPage';
 import '../static/styles/PageContainer.css';
 

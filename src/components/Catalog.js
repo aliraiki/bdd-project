@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../static/styles/Catalog.css';
 import InformationPage from './InformationPage';
-import ResultPage from './ResultPage';
 import PageContainer from './PageContainer';
 
 function Catalog({
