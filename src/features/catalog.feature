@@ -13,7 +13,6 @@ Feature: Catalog
     Then they should see the message 'Aucun article n'est disponible'
 
   Scenario: Display only purchasable items
-    Given a user with n currency
+    Given a user with 200 currency
     When they visit the homepage
-    Then they should only see the items with a unit price inferior to n
-
+    Then they should only see the 3 items with price lower or equal to 200

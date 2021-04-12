@@ -54,4 +54,26 @@ defineFeature(feature, (test) => {
       expect(noItemMessage).toBeInTheDocument();
     });
   });
+
+  test('Display only purchasable items', ({ given, when, then }) => {
+    given('a user with 200 currency', () => {
+      availableItems = [
+        newProduct(1, 'Produit 1'),
+        newProduct(2, 'Produit 2'),
+        newProduct(3, 'Produit 3'),
+        newProduct(4, 'Produit 4'),
+        newProduct(5, 'Produit 5'),
+      ];
+    });
+
+    when('they visit the homepage', () => {
+      catalog = render(<Catalog items={availableItems} />);
+    });
+
+    then('they should only see the 3 items with price lower or equal to 200', () => {
+      numberOfItems = catalog.container.querySelectorAll('.item').length;
+      const expectedNbOfItems = 3;
+      expect(numberOfItems).toEqual(expectedNbOfItems);
+    });
+  });
 });
