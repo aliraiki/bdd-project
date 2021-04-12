@@ -57,8 +57,8 @@ defineFeature(feature, (test) => {
 
   test('Display only purchasable items', ({ given, when, then }) => {
     let availableItems = [];
-    let n1;
-    let n2;
+    let wallet1;
+    let wallet2;
     let catalog1;
     let catalog2;
     let numberOfItems1;
@@ -72,13 +72,13 @@ defineFeature(feature, (test) => {
         newProduct(4, 'Reanimation', 'Small description', 250),
         newProduct(5, 'Antidote', 'Small description', 150),
       ];
-      n1=200;
-      n2 = 250;
+      wallet1 = 200;
+      wallet2 = 250;
     });
 
     when('they visit the homepage', () => {
-      catalog1 = render(<Catalog items={availableItems} wallet={n1} />);
-      catalog2 = render(<Catalog items={availableItems} wallet={n2} />);
+      catalog1 = render(<Catalog items={availableItems} wallet={wallet1} />);
+      catalog2 = render(<Catalog items={availableItems} wallet={wallet2} />);
     });
 
     then('they should only see the items with price lower or equal to n', () => {
