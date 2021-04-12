@@ -57,9 +57,12 @@ defineFeature(feature, (test) => {
 
   test('Display only purchasable items', ({ given, when, then }) => {
     let availableItems = [];
-    let n;
-    let catalog;
-    let numberOfItems;
+    let n1;
+    let n2;
+    let catalog1;
+    let catalog2;
+    let numberOfItems1;
+    let numberOfItems2;
 
     given('a user with n currency', () => {
       availableItems = [
@@ -69,17 +72,22 @@ defineFeature(feature, (test) => {
         newProduct(4, 'Reanimation', 'Small description', 250),
         newProduct(5, 'Antidote', 'Small description', 150),
       ];
-      n=200;
+      n1=200;
+      n2 = 250;
     });
 
     when('they visit the homepage', () => {
-      catalog = render(<Catalog items={availableItems} wallet={n} />);
+      catalog1 = render(<Catalog items={availableItems} wallet={n1} />);
+      catalog2 = render(<Catalog items={availableItems} wallet={n2} />);
     });
 
     then('they should only see the items with price lower or equal to n', () => {
-      numberOfItems = catalog.container.querySelectorAll('.item').length;
-      const expectedNbOfItems = 5;
-      expect(numberOfItems).toEqual(expectedNbOfItems);
+      numberOfItems1 = catalog1.container.querySelectorAll('.item').length;
+      const expectedNbOfItems1 = 3;
+      expect(numberOfItems1).toEqual(expectedNbOfItems1);
+      numberOfItems2 = catalog2.container.querySelectorAll('.item').length;
+      const expectedNbOfItems2 = 4;
+      expect(numberOfItems2).toEqual(expectedNbOfItems2);
     });
   });
 });
