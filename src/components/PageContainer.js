@@ -40,7 +40,13 @@ function PageContainer(
       <div className="page-numbers">
         <span>Pages de résultat : </span>
         {pages.map((page) => (
-          <button onClick={() => setCurrentPage(page)} type="button" datatest-id="page_button" key={page} className="page-number">
+          <button
+            onClick={() => setCurrentPage(page)}
+            type="button"
+            datatest-id="page_button"
+            key={page}
+            className={(page === currentPage) ? 'page-number-active' : 'page-number'}
+          >
             {page + 1}
           </button>
         ))}

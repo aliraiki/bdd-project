@@ -4,3 +4,7 @@
     grid-gap: 20px;
     padding-inline-start: 0;
 }
+
+.page-number-active {
+    background-color: #FF5656;
+}
