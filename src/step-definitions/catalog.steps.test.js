@@ -115,10 +115,10 @@ defineFeature(feature, (test) => {
 
     then('they should only see the items with price lower or equal to n', () => {
       numberOfItems1 = catalog1.container.querySelectorAll('.item').length;
-      const expectedNbOfItems1 = 5;
+      const expectedNbOfItems1 = 3;
       expect(numberOfItems1).toEqual(expectedNbOfItems1);
       numberOfItems2 = catalog2.container.querySelectorAll('.item').length;
-      const expectedNbOfItems2 = 5;
+      const expectedNbOfItems2 = 4;
       expect(numberOfItems2).toEqual(expectedNbOfItems2);
     });
   });
