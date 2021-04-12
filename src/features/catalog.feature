@@ -12,11 +12,6 @@ Feature: Catalog
     When they visit the homepage
     Then they should see the message 'Aucun article n'est disponible'
 
-  Scenario: Display only purchasable items under 200
-    Given a user with 200 currency
-    When they visit the homepage
-    Then they should only see the 3 items with price lower or equal to 200
-
   Scenario: Display only purchasable items
     Given a user with n currency
     When they visit the homepage
