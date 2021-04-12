@@ -12,7 +12,7 @@ Feature: Catalog
     When they visit the homepage
     Then they should see the message 'Aucun article n'est disponible'
 
-  Scenario: There are more than 10 products
-    Given a user and 15 available products
-    When the user visists the homepage
-    Then they should have 2 result pages
+  #Scenario: There are more than 10 products
+    #Given a user and 15 available products
+    #When the user visists the homepage
+    #Then they should have 2 result pages and

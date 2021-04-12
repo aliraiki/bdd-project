@@ -16,6 +16,16 @@ const availableItems = [
   newProduct(3, 'Potion', 'Small description', 200, potionImage),
   newProduct(4, 'Reanimation', 'Small description', 250, reanimationImage),
   newProduct(5, 'Antidote', 'Small description', 150, antidoteImage),
+  newProduct(6, 'Poke Ball', 'Small description', 200, pokeballImage),
+  newProduct(7, 'Super Ball', 'Small description', 400, superballImage),
+  newProduct(8, 'Potion', 'Small description', 200, potionImage),
+  newProduct(9, 'Reanimation', 'Small description', 250, reanimationImage),
+  newProduct(10, 'Antidote', 'Small description', 150, antidoteImage),
+  newProduct(11, 'Poke Ball', 'Small description', 200, pokeballImage),
+  newProduct(12, 'Super Ball', 'Small description', 400, superballImage),
+  newProduct(13, 'Potion', 'Small description', 200, potionImage),
+  newProduct(14, 'Reanimation', 'Small description', 250, reanimationImage),
+  newProduct(15, 'Antidote', 'Small description', 150, antidoteImage),
 ];
 
 function App({ initialAmountOfMoney, items }) {

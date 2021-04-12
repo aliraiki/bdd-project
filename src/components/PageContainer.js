@@ -24,7 +24,7 @@ function PageContainer(
       />
       <div className="page-numbers">
         {pages.map((page) => (
-          <button onClick={() => setCurrentPage(page)} type="button">
+          <button onClick={() => setCurrentPage(page)} type="button" datatest-id="page_button" key={page} className="page-number">
             {page + 1}
           </button>
         ))}

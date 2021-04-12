@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import InformationPage from './InformationPage';
 
+// Ce composant ne sert à peu près à rien pour l'instant.
+
 function ResultPage({
   items, boughtItems, setBoughtItems, wallet, setWallet,
 }) {
