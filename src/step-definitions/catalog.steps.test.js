@@ -56,18 +56,24 @@ defineFeature(feature, (test) => {
   });
 
   test('Display only purchasable items', ({ given, when, then }) => {
+    let availableItems = [];
+    let availableItemswithMoney = [];
+    let catalog;
+    let numberOfItems;
+
     given('a user with 200 currency', () => {
       availableItems = [
-        newProduct(1, 'Produit 1'),
-        newProduct(2, 'Produit 2'),
-        newProduct(3, 'Produit 3'),
-        newProduct(4, 'Produit 4'),
-        newProduct(5, 'Produit 5'),
+        newProduct(1, 'Poke Ball', 'Small description', 200),
+        newProduct(2, 'Super Ball', 'Small description', 400),
+        newProduct(3, 'Potion', 'Small description', 200),
+        newProduct(4, 'Reanimation', 'Small description', 250),
+        newProduct(5, 'Antidote', 'Small description', 150),
       ];
+      availableItemswithMoney = availableItems.filter(item => item.price <= 200)
     });
 
     when('they visit the homepage', () => {
-      catalog = render(<Catalog items={availableItems} />);
+      catalog = render(<Catalog items={availableItemswithMoney} />);
     });
 
     then('they should only see the 3 items with price lower or equal to 200', () => {
