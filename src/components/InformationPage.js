@@ -32,7 +32,7 @@ function InformationPage({
   return (
     <div className="info-section">
       <div className="description-block">
-        <p id="description">{itemDescription.substring(0, 50)}</p>
+        <span id="description">{itemDescription.substring(0, 50)}</span>
         {itemDescription.length > 50 && '...'}
       </div>
 
