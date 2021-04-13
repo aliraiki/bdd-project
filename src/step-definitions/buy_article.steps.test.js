@@ -63,7 +63,9 @@ defineFeature(feature, (test) => {
       homepage = render(<App items={[item]} initialAmountOfMoney={initialAmountOfMoney} />);
     });
 
-    when('they click on the Buy symbol of this article', () => {
+    when('they click on the Buy symbol to buy 2 pieces of this article', () => {
+      const incrementButton = homepage.getByTestId('increment');
+      fireEvent.click(incrementButton);
       const pokeballBuyButton = homepage.getAllByTestId('buy')[0];
       fireEvent.click(pokeballBuyButton);
     });

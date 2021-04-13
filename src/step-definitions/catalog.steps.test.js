@@ -56,46 +56,39 @@ defineFeature(feature, (test) => {
     });
   });
 
-  /*test('Displays all available items (5 items)', ({ given, when, then }) => {
+  test('Display only purchasable items', ({ given, when, then }) => {
     let availableItems = [];
-    let catalog;
-    let numberOfItemsOnFirstPage;
-    let numberOfItemsOnSecondPage;
-    let numberOfResultPages;
+    let wallet1;
+    let wallet2;
+    let catalog1;
+    let catalog2;
+    let numberOfItems1;
+    let numberOfItems2;
 
-    given('a user and 5 available items', () => {
+    given('a user with n currency', () => {
       availableItems = [
-        newProduct(1, 'Produit 1'),
-        newProduct(2, 'Produit 2'),
-        newProduct(3, 'Produit 3'),
-        newProduct(4, 'Produit 4'),
-        newProduct(5, 'Produit 5'),
-        newProduct(6, 'Produit 1'),
-        newProduct(7, 'Produit 2'),
-        newProduct(8, 'Produit 3'),
-        newProduct(9, 'Produit 4'),
-        newProduct(10, 'Produit 5'),
-        newProduct(11, 'Produit 1'),
-        newProduct(12, 'Produit 2'),
-        newProduct(13, 'Produit 3'),
-        newProduct(14, 'Produit 4'),
-        newProduct(15, 'Produit 5'),
+        newProduct(1, 'Poke Ball', 'Small description', 200),
+        newProduct(2, 'Super Ball', 'Small description', 400),
+        newProduct(3, 'Potion', 'Small description', 200),
+        newProduct(4, 'Reanimation', 'Small description', 250),
+        newProduct(5, 'Antidote', 'Small description', 150),
       ];
+      wallet1 = 200;
+      wallet2 = 250;
     });
 
-    when('the user visit the homepage', () => {
-      catalog = render(<PageContainer items={availableItems} />);
+    when('they visit the homepage', () => {
+      catalog1 = render(<Catalog items={availableItems} wallet={wallet1} />);
+      catalog2 = render(<Catalog items={availableItems} wallet={wallet2} />);
     });
 
-    then('they should have 2 result pages', () => {
-      numberOfItemsOnFirstPage = catalog.container.querySelectorAll('.item').length;
-      const expectedNbOfItemsOnFirstPage = 10;
-      const expectedNbOfItemsOnSecondPage = 5;
-      const expectedNumberOfResultPages = 2;
-      expect(numberOfResultPages).toEqual(expectedNumberOfResultPages)
-      expect(numberOfItemsOnFirstPage).toEqual(expectedNbOfItemsOnFirstPage);
-      expect(numberOfItemsOnSecondPage).toEqual(expectedNbOfItemsOnSecondPage);
+    then('they should only see the items with price lower or equal to n', () => {
+      numberOfItems1 = catalog1.container.querySelectorAll('.item').length;
+      const expectedNbOfItems1 = 3;
+      expect(numberOfItems1).toEqual(expectedNbOfItems1);
+      numberOfItems2 = catalog2.container.querySelectorAll('.item').length;
+      const expectedNbOfItems2 = 4;
+      expect(numberOfItems2).toEqual(expectedNbOfItems2);
     });
-  });*/
-
+  });
 });

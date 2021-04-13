@@ -7,12 +7,13 @@ import PageContainer from './PageContainer';
 function Catalog({
   items, boughtItems, setBoughtItems, wallet, setWallet,
 }) {
-  if (items.length === 0) return <p>Aucun article n&apos;est disponible</p>;
+  const itemsToDisplay = items.filter((item) => item.price <= wallet);
+  if (itemsToDisplay.length === 0) return <p>Aucun article n&apos;est disponible</p>;
 
   return (
     <div id="catalog">
       <PageContainer
-        items={items}
+        items={itemsToDisplay}
         boughtItems={boughtItems}
         setBoughtItems={setBoughtItems}
         wallet={wallet}
