@@ -33,6 +33,5 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'linebreak-style': ["error", "windows"]
   },
 };
