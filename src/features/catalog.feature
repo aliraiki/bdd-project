@@ -1,6 +1,6 @@
 Feature: Catalog
 
-  It displays all the available products on the homepage
+  It displays up to 10 available articles per result page.
 
   Scenario: Displays all available items (5 items)
     Given a user and 5 available items
