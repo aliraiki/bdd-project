@@ -9,7 +9,7 @@ const feature = loadFeature('./src/features/choose_article_number.feature');
 defineFeature(feature, (test) => {
   test('Increment number of an item', ({ given, when, then }) => {
     let informationPage;
-    given(/^a user is on the information page of an item and counter is at (\d+)$/, (articleCount) => {
+    given(/^a user is on the information page of an item and counter is at (\d+)$/, () => {
       const item = newProduct(1, 'Produit 1');
       informationPage = render(<InformationPage item={item} />);
     });

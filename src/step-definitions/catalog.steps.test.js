@@ -3,7 +3,6 @@ import { defineFeature, loadFeature } from 'jest-cucumber';
 import { render, screen } from '@testing-library/react';
 import Catalog from '../components/Catalog';
 import newProduct from '../utils/newProduct';
-import PageContainer from "../components/PageContainer";
 
 const feature = loadFeature('./src/features/catalog.feature');
 
